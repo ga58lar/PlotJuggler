@@ -277,6 +277,7 @@ add_subdirectory( plotjuggler_plugins/VideoViewer )
 add_subdirectory( plotjuggler_plugins/ToolboxQuaternion )
 add_subdirectory( plotjuggler_plugins/ToolboxFFT )
 add_subdirectory( plotjuggler_plugins/ToolboxLuaEditor )
+add_subdirectory( plotjuggler_plugins/ToolboxDecDegUTM )
 
 add_subdirectory( plotjuggler_plugins/ParserProtobuf )
 add_subdirectory( plotjuggler_plugins/ParserROS )
