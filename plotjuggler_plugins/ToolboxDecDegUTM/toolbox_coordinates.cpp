@@ -21,6 +21,9 @@ ToolboxCoordinates::ToolboxCoordinates()
 
   connect(ui->buttonBox, &QDialogButtonBox::rejected, this, &ToolboxCoordinates::onClosed);
 
+  connect(ui->checkBoxMGRS, &QCheckBox::toggled, this,
+          &ToolboxCoordinates::onParametersChanged);
+
   connect(ui->pushButtonSave, &QPushButton::clicked, this,
           &ToolboxCoordinates::on_pushButtonSave_clicked);
 }
@@ -147,6 +150,7 @@ bool ToolboxCoordinates::generateUTM(GenerateType type)
   using namespace PJ;
 
   double unit_scale = 1.0;
+  bool mgrs_flag = ui->checkBoxMGRS->isChecked() ? true : false;
   auto transform = std::make_shared<DecimalDegreeToUTM>();
 
   std::vector<const PlotData*> src_data;
@@ -179,9 +183,10 @@ bool ToolboxCoordinates::generateUTM(GenerateType type)
   }
 
   transform->setData(_plot_data, src_data, dst_vector);
-  transform->calculate();
   transform->setScale(unit_scale);
+  transform->setMGRS(mgrs_flag);
 
+  transform->calculate();
 
   if (type == PREVIEW)
   {

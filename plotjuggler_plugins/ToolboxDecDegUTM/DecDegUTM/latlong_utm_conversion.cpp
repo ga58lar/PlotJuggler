@@ -6,8 +6,6 @@
 #include <stdlib.h>
 #include "constants.h"
 #include "latlong_utm_conversion.h"
-#include <iostream>
-
 
 /*Reference ellipsoids derived from Peter H. Dana's website- 
 http://www.utexas.edu/depts/grg/gcraft/notes/datum/elist.html

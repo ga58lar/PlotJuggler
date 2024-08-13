@@ -164,6 +164,13 @@
         <enum>QFrame::Plain</enum>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+         <widget class="QCheckBox" name="checkBoxMGRS">
+          <property name="text">
+           <string>MGRS</string>
+          </property>
+         </widget>
+        </item>
         <item>
          <widget class="QPushButton" name="pushButtonSave">
           <property name="enabled">

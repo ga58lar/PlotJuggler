@@ -12,8 +12,8 @@ void DecimalDegreeToUTM::reset()
 {
   _prev_utmx = 0;
   _prev_utmy = 0;
-  _utmx_offset = -600000;
-  _utmy_offset = -5300000;
+  _utmx_offset = 0;
+  _utmy_offset = 0;
   _last_timestamp = std::numeric_limits<double>::lowest();
 }
 
@@ -70,6 +70,11 @@ void DecimalDegreeToUTM::calculateNextPoint(size_t index,
   double utmx, utmy;
   int ellipsoid = 23;
   LLtoUTM(ellipsoid, lat, lon, utmy, utmx);
+
+  if (_mgrs) {
+    utmx = std::fmod(utmx, 100000);
+    utmy = std::fmod(utmy, 100000);
+  }
 
   _prev_utmx = utmx;
   _prev_utmy = utmy;

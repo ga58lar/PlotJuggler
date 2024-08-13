@@ -30,6 +30,11 @@ public:
     _scale = scale;
   }
 
+  void setMGRS(bool flag)
+  {
+    _mgrs = flag;
+  }
+
   void calculate() override;
 
   void calculateNextPoint(size_t index, const std::array<double, 2>& latlon,
@@ -41,6 +46,7 @@ private:
   double _utmx_offset = 0;
   double _utmy_offset = 0;
   double _scale = 1.0;
+  bool _mgrs = false;
   double _last_timestamp = std::numeric_limits<double>::lowest();
 };
 
